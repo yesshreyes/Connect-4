@@ -1,0 +1,551 @@
+board = [
+
+    "-", "-", "-", "-", "-", "-", "-",
+    "-", "-", "-", "-", "-", "-", "-",
+    "-", "-", "-", "-", "-", "-", "-",
+    "-", "-", "-", "-", "-", "-", "-",
+    "-", "-", "-", "-", "-", "-", "-",
+    "-", "-", "-", "-", "-", "-", "-"
+]
+
+game_still_going = True
+
+winner = None
+
+
+def part1():
+    global name1
+    global name2
+    global abc
+    global efg
+    global char1
+    global char2
+    global current_player
+    name1 = input("Player1\U0001F534 name: ")
+    name2 = input("Player2\U0001F7E1 name: ")
+    abc = list(name1)
+    efg = list(name2)
+    char1 = "\U0001F534"
+    char2 = "\U0001F7E1"
+    current_player = char1
+
+
+def display_board():
+    print("  ➊   ➋  ➌   ➍  ➎   ➏   ➐  ")
+    print("|   |   |   |   |   |   |   |")
+    print("| " + board[0] + " | " + board[1] + " | " + board[2] + " | " + board[3] + " | " + board[4] + " | " + board[
+        5] + " | " + board[6] + " |")
+    print("| " + board[7] + " | " + board[8] + " | " + board[9] + " | " + board[10] + " | " + board[11] + " | " + board[
+        12] + " | " + board[13] + " |")
+    print("| " + board[14] + " | " + board[15] + " | " + board[16] + " | " + board[17] + " | " + board[18] + " | " +
+          board[19] + " | " + board[20] + " |")
+    print("| " + board[21] + " | " + board[22] + " | " + board[23] + " | " + board[24] + " | " + board[25] + " | " +
+          board[26] + " | " + board[27] + " |")
+    print("| " + board[28] + " | " + board[29] + " | " + board[30] + " | " + board[31] + " | " + board[32] + " | " +
+          board[33] + " | " + board[34] + " |")
+    print("| " + board[35] + " | " + board[36] + " | " + board[37] + " | " + board[38] + " | " + board[39] + " | " +
+          board[40] + " | " + board[41] + " |")
+    print("IIIIIIIIIIIIIIIIIIIIIIIIIIIII")
+
+
+def handle_turn(player):
+    global columnno1
+    global columnno2
+    global columnno3
+    global columnno4
+    global columnno5
+    global columnno6
+    global columnno7
+    global nums
+    columnno1 = [35, 28, 21, 14, 7, 0]
+    columnno2 = [36, 29, 22, 15, 8, 1]
+    columnno3 = [37, 30, 23, 16, 9, 2]
+    columnno4 = [38, 31, 24, 17, 10, 3]
+    columnno5 = [39, 32, 25, 18, 11, 4]
+    columnno6 = [40, 33, 26, 19, 12, 5]
+    columnno7 = [41, 34, 27, 20, 13, 6]
+
+    print(player + "'s turn.")
+    position = int(input("Choose a column(1-7): "))
+    valid = False
+    nums = [1, 2, 3, 4, 5, 6, 7]
+    while not valid:
+        while position not in nums:
+            if position in nums:
+                break
+            position = int(input("Choose a column(1-7): "))
+            break
+
+        if board[position] == "-":
+            valid = True
+
+        else:
+            print("You cant go there.")
+
+        if position == 1:
+            if board[35] == "-":
+                board[35] = player
+            elif board[28] == "-":
+                board[28] = player
+            elif board[21] == "-":
+                board[21] = player
+            elif board[14] == "-":
+                board[14] = player
+            elif board[7] == "-":
+                board[7] = player
+            elif board[0] == "-":
+                board[0] = player
+
+        elif position == 2:
+            if board[36] == "-":
+                board[36] = player
+            elif board[29] == "-":
+                board[29] = player
+            elif board[22] == "-":
+                board[22] = player
+            elif board[15] == "-":
+                board[15] = player
+            elif board[8] == "-":
+                board[8] = player
+            elif board[1] == "-":
+                board[1] = player
+
+        elif position == 3:
+            if board[37] == "-":
+                board[37] = player
+            elif board[30] == "-":
+                board[30] = player
+            elif board[23] == "-":
+                board[23] = player
+            elif board[16] == "-":
+                board[16] = player
+            elif board[9] == "-":
+                board[9] = player
+            elif board[2] == "-":
+                board[2] = player
+
+        elif position == 4:
+            if board[38] == "-":
+                board[38] = player
+            elif board[31] == "-":
+                board[31] = player
+            elif board[24] == "-":
+                board[24] = player
+            elif board[17] == "-":
+                board[17] = player
+            elif board[10] == "-":
+                board[10] = player
+            elif board[3] == "-":
+                board[3] = player
+
+        elif position == 5:
+            if board[39] == "-":
+                board[39] = player
+            elif board[32] == "-":
+                board[32] = player
+            elif board[25] == "-":
+                board[25] = player
+            elif board[18] == "-":
+                board[18] = player
+            elif board[11] == "-":
+                board[11] = player
+            elif board[4] == "-":
+                board[4] = player
+
+        elif position == 6:
+            if board[40] == "-":
+                board[40] = player
+            elif board[33] == "-":
+                board[33] = player
+            elif board[26] == "-":
+                board[26] = player
+            elif board[19] == "-":
+                board[19] = player
+            elif board[12] == "-":
+                board[12] = player
+            elif board[5] == "-":
+                board[5] = player
+
+        elif position == 7:
+            if board[41] == "-":
+                board[41] = player
+            elif board[34] == "-":
+                board[34] = player
+            elif board[27] == "-":
+                board[27] = player
+            elif board[20] == "-":
+                board[20] = player
+            elif board[13] == "-":
+                board[13] = player
+            elif board[6] == "-":
+                board[6] = player
+
+        display_board()
+
+
+def check_if_game_over():
+    check_for_winner()
+    check_if_tie()
+
+
+def check_for_winner():
+    global winner
+    row_winner = check_rows()
+    coloumn_winner = check_columns()
+    diagonal_winner = check_diagonals()
+    if row_winner:
+        winner = row_winner
+
+    elif coloumn_winner:
+        winner = coloumn_winner
+
+    elif diagonal_winner:
+        winner = diagonal_winner
+    else:
+        winner = None
+
+    return
+
+
+def check_rows():
+    global game_still_going
+    row1_1234 = board[0] == board[1] == board[2] == board[3] != "-"
+    row1_2345 = board[1] == board[2] == board[3] == board[4] != "-"
+    row1_3456 = board[2] == board[3] == board[4] == board[5] != "-"
+    row1_4567 = board[3] == board[4] == board[5] == board[6] != "-"
+    row2_1234 = board[7] == board[8] == board[9] == board[10] != "-"
+    row2_2345 = board[8] == board[9] == board[10] == board[11] != "-"
+    row2_3456 = board[9] == board[10] == board[11] == board[12] != "-"
+    row2_4567 = board[10] == board[11] == board[12] == board[13] != "-"
+    row3_1234 = board[14] == board[15] == board[16] == board[17] != "-"
+    row3_2345 = board[15] == board[16] == board[17] == board[18] != "-"
+    row3_3456 = board[16] == board[17] == board[18] == board[19] != "-"
+    row3_4567 = board[17] == board[18] == board[19] == board[20] != "-"
+    row4_1234 = board[21] == board[22] == board[23] == board[24] != "-"
+    row4_2345 = board[22] == board[23] == board[24] == board[25] != "-"
+    row4_3456 = board[23] == board[24] == board[25] == board[26] != "-"
+    row4_4567 = board[24] == board[25] == board[26] == board[27] != "-"
+    row5_1234 = board[28] == board[29] == board[30] == board[31] != "-"
+    row5_2345 = board[29] == board[30] == board[31] == board[32] != "-"
+    row5_3456 = board[30] == board[31] == board[32] == board[33] != "-"
+    row5_4567 = board[31] == board[32] == board[33] == board[34] != "-"
+    row6_1234 = board[35] == board[36] == board[37] == board[38] != "-"
+    row6_2345 = board[36] == board[37] == board[38] == board[39] != "-"
+    row6_3456 = board[37] == board[38] == board[39] == board[40] != "-"
+    row6_4567 = board[38] == board[39] == board[40] == board[41] != "-"
+
+    if row1_1234 or row1_2345 or row1_3456 or row1_4567 or row2_1234 or row2_2345 or row2_2345 or row2_3456 or row2_4567 or row3_1234 or row3_2345 or row3_3456 or row3_4567 or row4_1234 or row4_2345 or row5_3456 or row5_4567 or row6_1234 or row6_2345 or row6_3456 or row6_4567 or row4_3456 or row4_4567 or row5_1234 or row5_2345:
+        game_still_going = False
+
+    if row1_1234:
+        return board[0]
+
+    elif row1_2345:
+        return board[1]
+
+    elif row1_3456:
+        return board[2]
+
+    elif row1_4567:
+        return board[3]
+
+    elif row2_1234:
+        return board[7]
+
+    elif row2_2345:
+        return board[8]
+
+    elif row2_3456:
+        return board[9]
+
+    elif row2_4567:
+        return board[10]
+
+    elif row3_1234:
+        return board[14]
+
+    elif row3_2345:
+        return board[15]
+
+    elif row3_3456:
+        return board[16]
+
+    elif row3_4567:
+        return board[17]
+
+    elif row4_1234:
+        return board[21]
+
+    elif row4_2345:
+        return board[22]
+
+    elif row4_3456:
+        return board[23]
+
+    elif row4_4567:
+        return board[24]
+
+    elif row5_1234:
+        return board[28]
+
+    elif row5_2345:
+        return board[29]
+
+    elif row5_3456:
+        return board[30]
+
+    elif row5_4567:
+        return board[31]
+
+    elif row6_1234:
+        return board[35]
+
+    elif row6_2345:
+        return board[36]
+
+    elif row6_3456:
+        return board[37]
+
+    elif row6_4567:
+        return board[38]
+
+    return
+
+
+def check_diagonals():
+    global game_still_going
+    diagonal1 = board[14] == board[22] == board[30] == board[38] != "-"
+    diagonal2 = board[7] == board[15] == board[23] == board[31] != "-"
+    diagonal3 = board[15] == board[23] == board[31] == board[39] != "-"
+    diagonal4 = board[0] == board[8] == board[16] == board[24] != "-"
+    diagonal5 = board[8] == board[16] == board[24] == board[32] != "-"
+    diagonal6 = board[16] == board[24] == board[32] == board[40] != "-"
+    diagonal7 = board[1] == board[9] == board[17] == board[25] != "-"
+    diagonal8 = board[9] == board[17] == board[25] == board[33] != "-"
+    diagonal9 = board[17] == board[25] == board[33] == board[41] != "-"
+    diagonal10 = board[2] == board[10] == board[18] == board[26] != "-"
+    diagonal11 = board[10] == board[18] == board[26] == board[34] != "-"
+    diagonal12 = board[3] == board[11] == board[19] == board[27] != "-"
+    diagonal13 = board[20] == board[26] == board[32] == board[38] != "-"
+    diagonal14 = board[13] == board[19] == board[25] == board[31] != "-"
+    diagonal15 = board[19] == board[25] == board[31] == board[37] != "-"
+    diagonal16 = board[6] == board[12] == board[18] == board[24] != "-"
+    diagonal17 = board[12] == board[18] == board[24] == board[30] != "-"
+    diagonal18 = board[18] == board[24] == board[30] == board[36] != "-"
+    diagonal19 = board[5] == board[11] == board[17] == board[23] != "-"
+    diagonal20 = board[11] == board[17] == board[23] == board[29] != "-"
+    diagonal21 = board[17] == board[23] == board[29] == board[35] != "-"
+    diagonal22 = board[4] == board[10] == board[16] == board[22] != "-"
+    diagonal23 = board[10] == board[16] == board[22] == board[28] != "-"
+    diagonal24 = board[3] == board[9] == board[15] == board[21] != "-"
+
+    if diagonal1 or diagonal2 or diagonal3 or diagonal4 or diagonal5 or diagonal6 or diagonal7 or diagonal8 or diagonal9 or diagonal10 or diagonal11 or diagonal12 or diagonal13 or diagonal14 or diagonal15 or diagonal16 or diagonal17 or diagonal18 or diagonal19 or diagonal20 or diagonal21 or diagonal22 or diagonal23 or diagonal24:
+        game_still_going = False
+
+    if diagonal1:
+        return board[14]
+
+    elif diagonal2:
+        return board[7]
+
+    elif diagonal3:
+        return board[15]
+
+    elif diagonal4:
+        return board[0]
+
+    elif diagonal5:
+        return board[8]
+
+    elif diagonal6:
+        return board[16]
+
+    elif diagonal7:
+        return board[1]
+
+    elif diagonal8:
+        return board[9]
+
+    elif diagonal9:
+        return board[17]
+
+    elif diagonal10:
+        return board[2]
+
+    elif diagonal11:
+        return board[10]
+
+    elif diagonal12:
+        return board[3]
+
+    elif diagonal13:
+        return board[20]
+
+    elif diagonal14:
+        return board[13]
+
+    elif diagonal15:
+        return board[19]
+
+    elif diagonal16:
+        return board[6]
+
+    elif diagonal17:
+        return board[12]
+
+    elif diagonal18:
+        return board[18]
+
+    elif diagonal19:
+        return board[5]
+
+    elif diagonal20:
+        return board[11]
+
+    elif diagonal21:
+        return board[17]
+
+    elif diagonal22:
+        return board[4]
+
+    elif diagonal23:
+        return board[10]
+
+    elif diagonal24:
+        return board[3]
+
+    return
+
+
+def check_columns():
+    global game_still_going
+    column1 = board[0] == board[7] == board[14] == board[21] != "-"
+    column2 = board[7] == board[14] == board[21] == board[28] != "-"
+    column3 = board[14] == board[21] == board[28] == board[35] != "-"
+    column4 = board[1] == board[8] == board[15] == board[22] != "-"
+    column5 = board[8] == board[15] == board[22] == board[29] != "-"
+    column6 = board[15] == board[22] == board[29] == board[36] != "-"
+    column7 = board[2] == board[9] == board[16] == board[23] != "-"
+    column8 = board[9] == board[16] == board[23] == board[30] != "-"
+    column9 = board[16] == board[23] == board[30] == board[37] != "-"
+    column10 = board[3] == board[10] == board[17] == board[24] != "-"
+    column11 = board[10] == board[17] == board[24] == board[31] != "-"
+    column12 = board[17] == board[24] == board[31] == board[38] != "-"
+    column13 = board[4] == board[11] == board[18] == board[25] != "-"
+    column14 = board[11] == board[18] == board[25] == board[32] != "-"
+    column15 = board[18] == board[25] == board[32] == board[39] != "-"
+    column16 = board[5] == board[12] == board[19] == board[26] != "-"
+    column17 = board[12] == board[19] == board[26] == board[33] != "-"
+    column18 = board[19] == board[26] == board[33] == board[40] != "-"
+    column19 = board[6] == board[13] == board[20] == board[27] != "-"
+    column20 = board[13] == board[20] == board[27] == board[34] != "-"
+    column21 = board[20] == board[27] == board[34] == board[41] != "-"
+
+    if column1 or column2 or column3 or column4 or column5 or column6 or column7 or column8 or column9 or column10 or column11 or column12 or column13 or column14 or column15 or column16 or column17 or column18 or column19 or column20 or column21:
+        game_still_going = False
+
+    if column1:
+        return board[0]
+
+    elif column2:
+        return board[7]
+
+    elif column3:
+        return board[14]
+
+    elif column4:
+        return board[1]
+
+    elif column5:
+        return board[8]
+
+    elif column6:
+        return board[15]
+
+    elif column7:
+        return board[2]
+
+    elif column8:
+        return board[9]
+
+    elif column9:
+        return board[16]
+
+    elif column10:
+        return board[3]
+
+    elif column11:
+        return board[10]
+
+    elif column12:
+        return board[17]
+
+    elif column13:
+        return board[4]
+
+    elif column14:
+        return board[11]
+
+    elif column15:
+        return board[18]
+
+    elif column16:
+        return board[5]
+
+    elif column17:
+        return board[12]
+
+    elif column18:
+        return board[19]
+
+    elif column19:
+        return board[6]
+
+    elif column20:
+        return board[13]
+
+    elif column21:
+        return board[20]
+
+    return
+
+
+def check_if_tie():
+    global game_still_going
+    if "-" not in board:
+        game_still_going = False
+    return
+
+
+def flip_player():
+    global current_player
+    if current_player == char1:
+        current_player = char2
+
+    elif current_player == char2:
+        current_player = char1
+    return
+
+
+def play_game():
+    print("\U0001F534\U0001F534\U0001F534\U0001F534 𝘾𝙤𝙣𝙣𝙚𝙘𝙩 4 \U0001F7E1\U0001F7E1\U0001F7E1\U0001F7E1\U0001F7E1")
+    print()
+    print(
+        "...𝗧𝗵𝗲 𝗮𝗶𝗺 𝗳𝗼𝗿 𝘁𝗵𝗲 𝗽𝗹𝗮𝘆𝗲𝗿 𝗶𝘀 𝘁𝗼 𝗺𝗮𝗸𝗲 𝗮 𝘀𝘁𝗿𝗮𝗶𝗴𝗵𝘁 𝗹𝗶𝗻𝗲 𝗼𝗳 𝗳𝗼𝘂𝗿 𝗼𝘄𝗻 𝗽𝗶𝗲𝗰𝗲𝘀; 𝘁𝗵𝗲 𝗹𝗶𝗻𝗲 𝗰𝗮𝗻 𝗯𝗲 𝘃𝗲𝗿𝘁𝗶𝗰𝗮𝗹, 𝗵𝗼𝗿𝗶𝘇𝗼𝗻𝘁𝗮𝗹 𝗼𝗿 𝗱𝗶𝗮𝗴𝗼𝗻𝗮𝗹...")
+    print()
+    part1()
+    display_board()
+    while game_still_going:
+        handle_turn(current_player)
+        check_if_game_over()
+        flip_player()
+    if winner == char1 or winner == char2:
+        if winner == char1:
+            print(name1 + " won!\U0001F389")
+        elif winner == char2:
+            print(name2 + " won!\U0001F389")
+    elif winner == None:
+        print("Tie.")
+
+
+play_game()
